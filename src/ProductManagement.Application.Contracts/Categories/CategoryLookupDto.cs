@@ -1,10 +1,9 @@
 ﻿using System;
-using Volo.Abp.Domain.Entities.Auditing;
-
 namespace ProductManagement.Categories
 {
-    public class Category : AuditedAggregateRoot<Guid>
+    public class CategoryLookupDto
     {
+        public Guid Id { get; set; }
         public string Name { get; set; }
     }
 }

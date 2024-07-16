@@ -23,16 +23,30 @@ public class ProductManagementMenuContributor : IMenuContributor
         var administration = context.Menu.GetAdministration();
         var l = context.GetLocalizer<ProductManagementResource>();
 
-        context.Menu.Items.Insert(
-            0,
-            new ApplicationMenuItem(
-                ProductManagementMenus.Home,
-                l["Menu:Home"],
-                "~/",
-                icon: "fas fa-home",
-                order: 0
-            )
-        );
+        //context.Menu.Items.Insert(
+        //    0,
+        //    new ApplicationMenuItem(
+        //        ProductManagementMenus.Home,
+        //        l["Menu:Home"],
+        //        "~/",
+        //        icon: "fas fa-home",
+        //        order: 0
+        //    )
+        //);
+
+        context.Menu.AddItem(
+    new ApplicationMenuItem(
+        "ProductManagement",
+        l["Menu:ProductManagement"],
+        icon: "fas fa-shopping-cart"
+            ).AddItem(
+        new ApplicationMenuItem(
+            "ProductManagement.Products",
+            l["Menu:Products"],
+            url: "/Products"
+        )
+    )
+);
 
         if (MultiTenancyConsts.IsEnabled)
         {
